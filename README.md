@@ -4,9 +4,9 @@ Paulo Eduardo de Oliveira Ferraz
 
 Prof. Gustavo Cicotoste
 
-Cada pasta tem umexercício... Deixei em formato markdown para facilitar a leitura.
+Cada pasta tem um exercício... Deixei em formato markdown para facilitar a leitura.
 
-Os arquivos estão na pasta [docs](./docs/)
+Os arquivos auxiliares estão na pasta [docs](./docs/)
 
 ## Links para os Exercícios
 
