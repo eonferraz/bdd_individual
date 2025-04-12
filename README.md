@@ -2,5 +2,5 @@
 
 Paulo Eduardo de Oliveira Ferraz
 
-Prof. Gustavo Ciscotoste
+Prof. Gustavo Cicotoste
 
