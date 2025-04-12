@@ -1,6 +1,8 @@
-# Bancos de Dados Distribuidos - FGV
+# Paulo Eduardo de Oliveira Ferraz
 
-Paulo Eduardo de Oliveira Ferraz
+## Banco de Dados Distribuidos
+
+### Fundação Getúlio Vargas
 
 Prof. Gustavo Cicotoste
 
