@@ -94,3 +94,69 @@ CREATE TABLE ads_funcionarios (
     data_admissao DATE NOT NULL
 );
 ```
+
+
+# Dicionário de Dados
+
+## Tabela: `afdt_registros`
+Registros brutos de marcação de ponto conforme extraído do arquivo AFDT.
+
+| Campo                | Tipo     | Tamanho | Obrigatório | Descrição                                                           |
+|----------------------|----------|---------|-------------|----------------------------------------------------------------------|
+| id                   | SERIAL   | -       | Sim         | Identificador único da linha (chave primária)                        |
+| seq_registro         | CHAR     | 9       | Sim         | Sequência do registro no arquivo                                     |
+| tipo_registro        | CHAR     | 1       | Sim         | Tipo do registro (conforme layout da Portaria 1510)                  |
+| data_marcacao        | DATE     | -       | Sim         | Data da marcação de ponto                                            |
+| hora_marcacao        | TIME     | -       | Sim         | Hora da marcação de ponto                                            |
+| pis                  | CHAR     | 11      | Sim         | Número do PIS do funcionário                                         |
+| num_rep              | CHAR     | 17      | Não         | Número de série do Registrador Eletrônico de Ponto (REP)            |
+| tipo_marcacao        | CHAR     | 1       | Não         | Indica o tipo da marcação (entrada, saída etc.)                      |
+| sequencial_marcacao  | CHAR     | 2       | Não         | Número sequencial da marcação no dia                                 |
+| tipo_informacao      | CHAR     | 1       | Não         | Tipo de informação complementar                                      |
+| motivo               | TEXT     | -       | Não         | Observações ou motivo da marcação, se aplicável                      |
+
+---
+
+## Tabela: `acjef_jornada`
+Detalhamento da jornada efetiva por funcionário.
+
+| Campo                | Tipo     | Tamanho | Obrigatório | Descrição                                                            |
+|----------------------|----------|---------|-------------|----------------------------------------------------------------------|
+| id                   | SERIAL   | -       | Sim         | Identificador único da linha (chave primária)                        |
+| seq_registro         | CHAR     | 9       | Sim         | Sequência do registro no arquivo                                     |
+| tipo_registro        | CHAR     | 1       | Sim         | Tipo do registro                                                     |
+| pis                  | CHAR     | 11      | Sim         | Número do PIS do funcionário                                         |
+| data_jornada         | DATE     | -       | Sim         | Data da jornada de trabalho                                          |
+| hora_entrada         | TIME     | -       | Não         | Hora de entrada registrada                                           |
+| codigo_horario       | CHAR     | 4       | Não         | Código do horário de trabalho                                        |
+| horas_diurnas        | TIME     | -       | Não         | Total de horas trabalhadas no período diurno                         |
+| horas_noturnas       | TIME     | -       | Não         | Total de horas no período noturno                                    |
+| horas_extras1        | TIME     | -       | Não         | Horas extras tipo 1                                                  |
+| perc_adicional1      | CHAR     | 4       | Não         | Percentual de adicional das horas extras tipo 1                      |
+| modalidade_extra1    | CHAR     | 1       | Não         | Modalidade das horas extras tipo 1                                   |
+| horas_extras2        | TIME     | -       | Não         | Horas extras tipo 2                                                  |
+| perc_adicional2      | CHAR     | 4       | Não         | Percentual de adicional das horas extras tipo 2                      |
+| modalidade_extra2    | CHAR     | 1       | Não         | Modalidade das horas extras tipo 2                                   |
+| horas_extras3        | TIME     | -       | Não         | Horas extras tipo 3                                                  |
+| perc_adicional3      | CHAR     | 4       | Não         | Percentual de adicional das horas extras tipo 3                      |
+| modalidade_extra3    | CHAR     | 1       | Não         | Modalidade das horas extras tipo 3                                   |
+| horas_extras4        | TIME     | -       | Não         | Horas extras tipo 4                                                  |
+| perc_adicional4      | CHAR     | 4       | Não         | Percentual de adicional das horas extras tipo 4                      |
+| modalidade_extra4    | CHAR     | 1       | Não         | Modalidade das horas extras tipo 4                                   |
+| horas_falta_atraso   | TIME     | -       | Não         | Horas faltantes ou atrasos no dia                                    |
+| sinal_compensacao    | CHAR     | 1       | Não         | Indica sinal positivo ou negativo no saldo de compensação            |
+| saldo_compensacao    | CHAR     | 4       | Não         | Saldo de horas a compensar ou compensadas                            |
+
+---
+
+## Tabela: `ads_funcionarios`
+Dados cadastrais dos funcionários.
+
+| Campo               | Tipo     | Tamanho | Obrigatório | Descrição                                      |
+|---------------------|----------|---------|-------------|-------------------------------------------------|
+| id                  | SERIAL   | -       | Sim         | Identificador único do funcionário              |
+| pis                 | CHAR     | 11      | Sim         | Número do PIS (único por funcionário)           |
+| nome                | TEXT     | -       | Sim         | Nome completo do funcionário                    |
+| codigo_departamento | TEXT     | -       | Sim         | Código ou descrição do departamento             |
+| data_admissao       | DATE     | -       | Sim         | Data de admissão na empresa                     |
+
