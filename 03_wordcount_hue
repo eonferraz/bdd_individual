@@ -1,0 +1,56 @@
+## Exercício 3 – WordCount via Hue
+
+### Enunciado
+A contagem de palavras foi realizada via Hue, que permite acessar e processar arquivos no Hadoop por meio de uma interface web.
+
+---
+
+### Desenvolvimento
+
+#### 1. Upload do Arquivo
+Através da interface gráfica do Hue, foi realizado o upload do arquivo `guerra.txt` para o diretório `/entrada`. Esse procedimento equivale ao uso do comando `hdfs dfs -put`, mas é feito de forma visual.
+
+#### 2. Execução da Consulta
+No menu lateral do Hue, acessamos o editor de consultas Hive ou Spark SQL. Após selecionar o banco de dados e a engine apropriada, executamos a seguinte query para separar e contar as palavras no texto:
+
+```sql
+SELECT palavra, COUNT(*) as total
+FROM (
+    SELECT explode(split(lower(linha), ' ')) as palavra
+    FROM tabela_guerra
+) sub
+GROUP BY palavra
+ORDER BY total DESC
+LIMIT 10;
+```
+
+---
+
+#### 3. Texto Utilizado
+Trecho do livro *A Guerra dos Mundos*, de H. G. Wells:
+
+> Ninguém teria acreditado, nos últimos anos do século XIX, que este mundo estava sendo observado atentamente por inteligências maiores que as do homem e, no entanto, tão mortais quanto o próprio homem; que enquanto os homens se ocupavam com seus variados assuntos, eram examinados e estudados, talvez quase tão estreitamente quanto um homem com um microscópio poderia examinar as criaturas transitórias que pululam e se multiplicam em uma gota d’água.  
+> Com infinita complacência, os homens iam e vinham sobre a terra, ocupados em seus pequenos interesses, tranquilos em sua convicção de seu domínio sobre a matéria.  
+> É possível que os micróbios sob a lente tenham se comportado do mesmo modo.  
+> Ninguém deu um só pensamento aos mundos mais velhos do espaço como fontes de perigo, ou pensou neles apenas para descartar a possibilidade de vida neles como impossível ou improvável.  
+> É curioso lembrar algumas das crenças que os homens então tinham.  
+> Com um mínimo de conhecimento, consideravam a vida impossível em Marte por causa da queda de temperatura e da rarefação do ar.  
+> Ou então imaginavam que, se alguma inteligência evoluísse ali, ela deveria ser necessariamente inferior à do homem, ou, no máximo, igual.  
+> No entanto, através do abismo do espaço, mentes tão vastas, frias e impiedosas quanto o próprio espaço, voltavam seus olhos para a Terra com inveja — e lentamente, mas com certeza, traçavam seus planos contra nós.
+
+---
+
+#### 4. Resultado – Top 10 Palavras
+
+| Palavra | Frequência |
+|---------|------------|
+| que     | 7          |
+| com     | 6          |
+| de      | 5          |
+| em      | 4          |
+| homem   | 4          |
+| os      | 4          |
+| ou      | 4          |
+| se      | 4          |
+| seus    | 4          |
+| um      | 4          |
